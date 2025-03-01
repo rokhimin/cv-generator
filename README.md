@@ -2,7 +2,7 @@
 #ReadMe
 
 #### About
-NIK (indonesian identity number) parse . simple in jekyll
+CV/ Portofolio Resume Generator | jekyll
 
 Live Demo : https://rokhimin.github.io/jekyll-cv-generator
 
