@@ -4,8 +4,7 @@
 #### About
 NIK (indonesian identity number) parse . simple in jekyll
 
-Live Demo : https://rokhimin.github.io/jekyll-nik-parse
-
+Live Demo : https://rokhimin.github.io/jekyll-cv-generator
 
 ## Contributing
 
