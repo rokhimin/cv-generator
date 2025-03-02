@@ -4,7 +4,7 @@
 #### About
 CV/ Portofolio Resume Generator | jekyll
 
-Live Demo : https://rokhimin.github.io/jekyll-cv-generator
+Live Demo : https://rokhimin.github.io/cv-generator
 
 ## Contributing
 
