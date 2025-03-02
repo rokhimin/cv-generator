@@ -1,9 +1,9 @@
 title: CV Generator | whdzera
 email: whdzera@gmail.com
-baseurl: "/jekyll-cv-generator" # the subpath of your site, e.g. /blog
+baseurl: "/cv-generator" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: whdzera
 github_username:  rokhimin/jekyll-cv-generator
 
 permalink: /:title.rb
-files: "/jekyll-cv-generator"
+files: "/cv-generator"
