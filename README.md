@@ -4,11 +4,18 @@
 #### About
 CV/ Portofolio Resume Generator | jekyll
 
-Live Demo : https://rokhimin.github.io/cv-generator
+#### Library
+- Jekyll
+- CSS (Bulma)
+- Javascript (Jquery, html2pdf)
+  
+##### Live Demo 
+https://rokhimin.github.io/cv-generator
+https://cv-generator-ivory.vercel.app/
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Rokhimin/jekyll-nik-parse/. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Rokhimin/cv-generator/. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
 
 ## Development
 
