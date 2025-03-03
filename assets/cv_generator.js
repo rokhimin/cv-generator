@@ -1,4 +1,30 @@
+
 $(document).ready(function() {
+
+    function adjustPreviewForMobile() {
+    if (window.innerWidth <= 768) {
+        const previewContainer = $('#previewContainer');
+        const containerWidth = previewContainer.width();
+        
+        // Sesuaikan ukuran font pada tampilan mobile
+        if (containerWidth < 400) {
+            $('#portfolioPreview').css('font-size', '0.85rem');
+            $('#previewName').css('font-size', '1.5rem');
+        } else {
+            $('#portfolioPreview').css('font-size', '');
+            $('#previewName').css('font-size', '');
+        }
+    } else {
+        // Reset styling untuk layar besar
+        $('#portfolioPreview').css('font-size', '');
+        $('#previewName').css('font-size', '');
+    }
+}
+
+// Jalankan fungsi saat halaman dimuat dan saat ukuran window berubah
+$(window).on('resize', adjustPreviewForMobile);
+adjustPreviewForMobile();
+
     // Tab switching
     $('.tabs li').on('click', function() {
         const tabId = $(this).attr('id');
@@ -279,10 +305,15 @@ $('#primaryColor, #backgroundColor, #textColor').on('input', function() {
             $('#profilePreview').css('border-color', primaryColor);
         }
     }
+    $('#downloadPDF').on('click', function() {
+    // Show loading indicator
+    const loadingMessage = $('<div class="notification is-info is-light">Generating PDF...</div>');
+    $(this).after(loadingMessage);
     
-    // Replace the existing downloadPDF function with this improved version
-$('#downloadPDF').on('click', function() {
-    // Create a clone of the preview to avoid modifying the displayed version
+    // Detect device type
+    const isMobile = window.innerWidth <= 768;
+    
+    // Create a clone of the preview to modify for PDF generation
     const element = document.getElementById('portfolioPreview').cloneNode(true);
     
     // Create a temporary container with proper dimensions
@@ -290,32 +321,74 @@ $('#downloadPDF').on('click', function() {
     pdfContainer.appendChild(element);
     document.body.appendChild(pdfContainer);
     
-    // Position off-screen but maintain proper dimensions
-    pdfContainer.style.position = 'fixed';
+    // Set the container to match A4 paper size regardless of device
+    pdfContainer.style.position = 'absolute';
+    pdfContainer.style.left = '-9999px';
     pdfContainer.style.width = '210mm'; // A4 width
-    pdfContainer.style.height = 'auto';
     pdfContainer.style.backgroundColor = $('#backgroundColor').val();
     
-    // Make sure all content is properly visible
-    Array.from(pdfContainer.querySelectorAll('*')).forEach(el => {
-        el.style.overflow = 'visible';
-    });
+    // Apply appropriate styles based on device
+    const style = document.createElement('style');
+    style.textContent = `
+        /* Force consistent styling for PDF */
+        .profile-section, .content-section {
+            padding: 20px !important;
+            overflow: visible !important;
+            width: 100% !important;
+            max-width: 210mm !important;
+        }
+        .profile-pic-container img {
+            width: ${isMobile ? '100px' : '120px'} !important;
+            height: ${isMobile ? '100px' : '120px'} !important;
+            display: block !important;
+            margin: 0 auto 15px auto !important;
+        }
+        h1, h2, h3, h4 {
+            margin-bottom: 10px !important;
+            overflow: visible !important;
+        }
+        p {
+            margin-bottom: 8px !important;
+            overflow: visible !important;
+        }
+        .section-title {
+            padding-bottom: 5px !important;
+            margin-top: 15px !important;
+            margin-bottom: 10px !important;
+        }
+        .skill-tag {
+            margin: 3px !important;
+            display: inline-block !important;
+            padding: 3px 8px !important;
+        }
+        * {
+            transform: none !important;
+            -webkit-transform: none !important;
+            box-sizing: border-box !important;
+            max-width: 210mm !important;
+        }
+    `;
+    pdfContainer.appendChild(style);
     
-    // Ensure the container and its content are fully rendered before conversion
+    // Give browser time to apply styles
     setTimeout(() => {
+        // Use different windowWidth value based on device
+        const windowWidth = isMobile ? 694 : 1408;
+        
         // Configure html2pdf options for better rendering
         const opt = {
             margin: [15, 15, 15, 15],
             filename: 'portfolio-cv.pdf',
-            image: { type: 'jpeg', quality: 1 },
+            image: { type: 'jpeg', quality: 0.98 },
             html2canvas: { 
-                scale: 2, 
+                scale: 2,
                 useCORS: true,
                 logging: false,
                 allowTaint: true,
                 scrollY: 0,
-                windowWidth: 1350, // Ensure proper rendering width
-                letterRendering: true
+                letterRendering: true,
+                windowWidth: windowWidth,
+                foreignObjectRendering: false
             },
             jsPDF: { 
                 unit: 'mm', 
@@ -334,11 +407,13 @@ $('#downloadPDF').on('click', function() {
             .then(() => {
                 // Clean up
                 document.body.removeChild(pdfContainer);
+                loadingMessage.remove();
             })
             .catch(error => {
                 console.error('PDF generation error:', error);
                 alert('There was an error generating your PDF. Please try again.');
                 document.body.removeChild(pdfContainer);
+                loadingMessage.remove();
             });
     }, 500); // Short delay to ensure rendering
 });

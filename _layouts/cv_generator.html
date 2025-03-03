@@ -1,136 +1,6 @@
 ---
 layout: default
 ---
-<style>
-    .preview-container {
-        border: 1px solid #ddd;
-        min-height: 600px;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-    .tab-content {
-        display: none;
-    }
-    .tab-content.is-active {
-        display: block;
-    }
-    .preview-section {
-        padding: 20px;
-    }
-    .profile-pic-container {
-        text-align: center;
-        margin-bottom: 15px;
-    }
-    #profilePreview {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid #3273dc;
-    }
-    .template-option {
-        cursor: pointer;
-        border: 2px solid #ddd;
-        border-radius: 5px;
-        padding: 10px;
-        margin-bottom: 10px;
-        transition: all 0.3s;
-    }
-    .template-option:hover, .template-option.selected {
-        border-color: #3273dc;
-        background-color: #f5f5f5;
-    }
-    .template-option img {
-        width: 100%;
-        height: auto;
-        border-radius: 3px;
-    }
-    /* Template styles */
-    /* Modern template */
-    .modern-template {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    .modern-template .profile-section {
-        text-align: center;
-        padding: 30px 0;
-    }
-    .modern-template .content-section {
-        padding: 20px;
-    }
-    .modern-template .section-title {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-        border-bottom: 2px solid;
-        padding-bottom: 5px;
-    }
-    .modern-template .skill-tag {
-        display: inline-block;
-        padding: 5px 10px;
-        margin: 5px;
-        border-radius: 15px;
-        font-size: 0.9rem;
-    }
-    
-    /* Classic template */
-    .classic-template {
-        font-family: 'Times New Roman', Times, serif;
-    }
-    .classic-template .header {
-        text-align: center;
-        padding: 20px 0;
-        border-bottom: 1px solid #333;
-    }
-    .classic-template .profile-pic-container {
-        float: right;
-        margin: 0 0 15px 15px;
-    }
-    .classic-template .section-title {
-        font-size: 1.3rem;
-        margin: 20px 0 10px 0;
-        border-bottom: 1px solid #333;
-    }
-    .classic-template .content-section {
-        clear: both;
-    }
-    
-    /* Minimalist template */
-    .minimalist-template {
-        font-family: Arial, sans-serif;
-    }
-    .minimalist-template .header {
-        display: flex;
-        align-items: center;
-        padding: 20px;
-    }
-    .minimalist-template .profile-info {
-        margin-left: 20px;
-    }
-    .minimalist-template .section-title {
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 1rem;
-        margin: 25px 0 15px 0;
-    }
-    .minimalist-template .skill-tag {
-        display: inline-block;
-        margin-right: 10px;
-        font-size: 0.9rem;
-    }
-    #fileUpload {
-        display: none;
-    }
-    .hidden-on-pdf {
-        display: block;
-    }
-    @media print {
-        .hidden-on-pdf {
-            display: none !important;
-        }
-    }
-</style>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <section class="section">
     <div class="container">
@@ -368,7 +238,7 @@ layout: default
             </div>
             
             <!-- Preview Panel -->
-            <div class="column is-7">
+            <div class="column is-12-mobile is-12-tablet is-7-desktop">
                 <div class="box">
                     <h2 class="subtitle">Live Preview</h2>
                     <div class="preview-container" id="previewContainer">
@@ -423,6 +293,5 @@ layout: default
         </div>
     </div>
 </section>
-
 
 <script src="{{ site.files }}/assets/cv_generator.js"></script>
