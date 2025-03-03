@@ -6,7 +6,7 @@ CV/ Portofolio Resume Generator | jekyll
 
 #### Library
 - Jekyll
-- CSS (Bulma)
+- CSS (Bulma, Font-awesome)
 - Javascript (Jquery, html2pdf)
   
 ##### Live Demo 
