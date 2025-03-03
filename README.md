@@ -11,6 +11,7 @@ CV/ Portofolio Resume Generator | jekyll
   
 ##### Live Demo 
 https://rokhimin.github.io/cv-generator
+
 https://cv-generator-ivory.vercel.app/
 
 ## Contributing
