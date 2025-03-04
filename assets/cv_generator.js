@@ -377,7 +377,7 @@ $('#primaryColor, #backgroundColor, #textColor').on('input', function() {
         
         // Configure html2pdf options for better rendering
         const opt = {
-            margin: [15, 15, 15, 15],
+            margin: [0, 0, 0, 0],
             filename: 'portfolio-cv.pdf',
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: { 
