@@ -338,8 +338,8 @@ $('#primaryColor, #backgroundColor, #textColor').on('input', function() {
             max-width: 210mm !important;
         }
         .profile-pic-container img {
-            width: ${isMobile ? '100px' : '120px'} !important;
-            height: ${isMobile ? '100px' : '120px'} !important;
+            width: ${isMobile ? '130px' : '130px'} !important;
+            height: ${isMobile ? '130px' : '130px'} !important;
             display: block !important;
             margin: 0 auto 15px auto !important;
         }
@@ -377,7 +377,7 @@ $('#primaryColor, #backgroundColor, #textColor').on('input', function() {
         
         // Configure html2pdf options for better rendering
         const opt = {
-            margin: [0, 0, 0, 0],
+            margin: [2, 2, 2, 2],
             filename: 'portfolio-cv.pdf',
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: { 
